@@ -20,6 +20,8 @@ services:
             - ./:/var/www
         depends_on:
             - db
+        environment:
+            - TZ=Europe/Moscow
         container_name: LP_app
 
     db:
@@ -28,7 +30,7 @@ services:
         volumes:
             - ./tmp/db:/var/lib/mysql
         environment:
-            MYSQL_DATABASE: base222_base
+            MYSQL_DATABASE: base1308_base
             MYSQL_ROOT_PASSWORD: root
         ports:
             - 8101:3306
