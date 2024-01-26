@@ -1,4 +1,4 @@
-FROM debian:12-slim
+FROM php:zts-bullseye
 
 RUN apt-get update && apt-get install -y \
     libpq-dev \
