@@ -1,6 +1,4 @@
-FROM php:8.1-fpm
-
-RUN rm /etc/apt/preferences.d/no-debian-php
+FROM php
 
 RUN apt-get update && apt-get install -y \
     libpq-dev \
