@@ -7,7 +7,10 @@ services:
             - ./:/var/www
             - ./_docker/nginx/conf.d:/etc/nginx/conf.d
         ports:
-            - 8080:80
+            - "80:80"
+            - "443:443"
+        restart: unless-stopped
+        tty: true
         depends_on:
             - app
         container_name: LP_nginx
@@ -16,11 +19,19 @@ services:
         build:
             context: .
             dockerfile: _docker/app/Dockerfile
+        image: php:8.1
+        restart: unless-stopped
+        tty: true
+        environment:
+            SERVICE_NAME: app
+            SERVICE_TAGS: dev
         volumes:
             - ./:/var/www
         depends_on:
             - db
         container_name: LP_app
+        networks:
+            - app-network
 
     db:
         image: mysql:8.0
@@ -28,12 +39,16 @@ services:
         volumes:
             - ./tmp/db:/var/lib/mysql
         environment:
-            MYSQL_DATABASE: base1308_base
-            MYSQL_ROOT_PASSWORD: root
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+            MYSQL_ROOT_PASSWORD: p@$$w0rd
         ports:
-            - 8101:3306
+            - 3306:3306
+        tty: true
         command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
         container_name: LP_db
+        networks:
+            - app-network
 
     node:
         build:
@@ -48,3 +63,6 @@ services:
         depends_on:
             - app
         container_name: LP_node
+    networks:
+        app-network:
+            driver: bridge
