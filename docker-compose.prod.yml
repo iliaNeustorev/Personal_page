@@ -28,6 +28,7 @@ services:
             - 3306:3306
         volumes:
             - ./tmp/db:/var/lib/mysql
+        network_mode: "host"
     nginx:
         image: nginx:latest
         container_name: LP_nginx
@@ -40,6 +41,7 @@ services:
             - 443:443
         depends_on:
             - app
+        network_mode: "host"
     node:
         build:
             context: .
