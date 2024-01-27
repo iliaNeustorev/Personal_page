@@ -14,4 +14,4 @@ USER node
 
 EXPOSE 5173
 
-# CMD ["sh", "-c", "npm install && npm run build -- --host"]
+RUN npm install && npm run build -- --host
