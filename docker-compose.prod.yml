@@ -36,7 +36,7 @@ services:
             - ./:/var/www
             - ./_docker/nginx/conf.d:/etc/nginx/conf.d
         ports:
-            - 80:80
+            - 8000:80
         depends_on:
             - app
     node:
