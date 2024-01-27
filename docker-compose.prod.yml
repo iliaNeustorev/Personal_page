@@ -2,12 +2,8 @@ version: "3"
 services:
     app:
         build:
-            args:
-                user: ilia
-                uid: 1000
             context: .
             dockerfile: _docker/app/Dockerfile
-        image: personalpage
         container_name: LP_app
         restart: unless-stopped
         working_dir: /var/www/
