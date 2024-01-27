@@ -12,6 +12,7 @@ services:
             - ./:/var/www
         depends_on:
             - db
+        network_mode: "host"
     db:
         image: mysql:8.0
         container_name: LP_db
@@ -53,3 +54,4 @@ services:
             - ./:/var/www
         depends_on:
             - app
+        network_mode: "host"
