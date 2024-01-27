@@ -36,10 +36,9 @@ Artisan::command('create-data', function () {
         'first_name' => 'Елена',
         'middle_name' => 'Борисовна',
         'last_name' => 'Език',
+        'email_verified_at' => Carbon::now(),
         'email' => 'ezikelena13081994@yandex.ru',
         'password' => Hash::make(123321),
     ]);
-    $user->email_verified_at = Carbon::now();
-    $user->save();
     $user->roles()->sync([2,3]);
 })->purpose('Display an inspiring quote');
