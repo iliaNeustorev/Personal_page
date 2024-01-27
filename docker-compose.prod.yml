@@ -12,7 +12,8 @@ services:
             - ./:/var/www
         depends_on:
             - db
-        network_mode: "host"
+        networks:
+            - my_network
     db:
         image: mysql:8.0
         container_name: LP_db
@@ -28,7 +29,8 @@ services:
             - 3306:3306
         volumes:
             - ./tmp/db:/var/lib/mysql
-        network_mode: "host"
+        networks:
+            - my_network
     nginx:
         image: nginx:latest
         container_name: LP_nginx
@@ -40,7 +42,8 @@ services:
             - 80:80
         depends_on:
             - app
-        network_mode: "host"
+        networks:
+            - my_network
     node:
         build:
             context: .
@@ -55,4 +58,8 @@ services:
             - ./:/var/www
         depends_on:
             - app
-        network_mode: "host"
+        networks:
+            - my_network
+networks:
+    my_network:
+        driver: bridge
