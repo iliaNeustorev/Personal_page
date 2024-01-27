@@ -1,8 +1,5 @@
 version: "3"
 services:
-    networks:
-        personalPage:
-            driver: bridge
     app:
         build:
             args:
@@ -10,14 +7,14 @@ services:
                 uid: 1000
             context: .
             dockerfile: _docker/app/Dockerfile
-        image: personalPage
+        image: personalpage
         container_name: LP_app
         restart: unless-stopped
         working_dir: /var/www/
         volumes:
             - ./:/var/www
-        networks:
-            - personalPage
+        depends_on:
+            - db
     db:
         image: mysql:8.0
         container_name: LP_db
@@ -31,8 +28,6 @@ services:
             SERVICE_NAME: mysql
         volumes:
             - ./tmp/db:/var/lib/mysql
-        networks:
-            - personalPage
     nginx:
         image: nginx:latest
         container_name: LP_nginx
@@ -42,8 +37,8 @@ services:
             - ./_docker/nginx/conf.d:/etc/nginx/conf.d
         ports:
             - 80:80
-        networks:
-            - personalPage
+        depends_on:
+            - app
     node:
         build:
             context: .
@@ -55,5 +50,5 @@ services:
         working_dir: /var/www
         volumes:
             - ./:/var/www
-        networks:
-            - personalPage
+        depends_on:
+            - app
