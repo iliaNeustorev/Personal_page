@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     curl
 
 
-USER node
+ENV COMPOSER_ALLOW_SUPERUSER=1
 
 EXPOSE 5173
 
