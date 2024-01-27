@@ -12,17 +12,6 @@ services:
         depends_on:
             - app
         container_name: LP_nginx
-
-    app:
-        build:
-            context: .
-            dockerfile: _docker/app/Dockerfile
-        volumes:
-            - ./:/var/www
-        depends_on:
-            - db
-        container_name: LP_app
-
     db:
         image: mysql:8.0
         restart: always
@@ -35,7 +24,6 @@ services:
             - 8101:3306
         command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
         container_name: LP_db
-
     node:
         build:
             context: .
@@ -49,3 +37,12 @@ services:
         depends_on:
             - app
         container_name: LP_node
+    app:
+        build:
+            context: .
+            dockerfile: _docker/app/Dockerfile
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - db
+        container_name: LP_app
