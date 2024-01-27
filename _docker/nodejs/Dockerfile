@@ -1,7 +1,5 @@
 FROM node:16
 
-USER node
-
 RUN sudo apt-get update \
     && sudo apt-get install -y \
         vim \
@@ -12,7 +10,8 @@ RUN sudo apt-get update \
 
 WORKDIR /home/node/app
 
-EXPOSE 5173
+USER node
 
+EXPOSE 5173
 
 CMD ["sh", "-c", "npm install && npm run build -- --host"]
