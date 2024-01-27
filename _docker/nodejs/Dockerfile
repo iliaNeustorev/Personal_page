@@ -1,17 +1,18 @@
 FROM node:16
 
-USER root
+USER node
 
-RUN apt-get update \
-    && apt-get install -y \
+RUN sudo apt-get update \
+    && sudo apt-get install -y \
         vim \
         zip \
         unzip \
         curl \
-    && rm -rf /var/lib/apt/lists/*
+    && sudo rm -rf /var/lib/apt/lists/*
 
-USER node
+WORKDIR /home/node/app
 
 EXPOSE 5173
 
-RUN npm install && npm run build -- --host
+
+CMD ["sh", "-c", "npm install && npm run build -- --host"]
