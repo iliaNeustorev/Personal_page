@@ -1,5 +1,7 @@
 FROM node:16
 
+WORKDIR /var/www
+
 RUN apt-get update && apt-get install -y \
     vim \
     zip \
