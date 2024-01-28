@@ -18,4 +18,7 @@ export default defineConfig({
         }),
         vue({}),
     ],
+    define: {
+        VITE_BACKEND_URL: process.env.VITE_BACKEND_URL,
+    }
 });

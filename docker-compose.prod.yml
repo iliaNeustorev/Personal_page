@@ -58,6 +58,8 @@ services:
             - ./:/var/www
         depends_on:
             - app
+        arguments:
+            - VITE_BACKEND_URL=${VITE_BACKEND_URL}
         networks:
             - my_network
 networks:
