@@ -6,7 +6,6 @@ RUN apt-get update && apt-get install -y \
     unzip \
     curl
 
-
 USER node
 
 EXPOSE 5173
