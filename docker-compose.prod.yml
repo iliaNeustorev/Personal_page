@@ -6,7 +6,7 @@ services:
         restart: unless-stopped
         volumes:
             - ./:/var/www
-            - ./_docker/nginx/conf.d:/etc/nginx/conf.d/default.conf:ro
+            - ./_docker/nginx/conf.d:/etc/nginx/conf.d
         ports:
             - 80:80
             - 443:443
