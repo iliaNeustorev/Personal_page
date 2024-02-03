@@ -4,11 +4,9 @@ import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
     server: {
+      https: false,
       hmr: {
         host: '89.111.152.136',
-      },
-      cors: {
-        origin: false,
       },
     },
     plugins: [
