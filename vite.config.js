@@ -5,7 +5,7 @@ import vue from "@vitejs/plugin-vue";
 export default defineConfig({
     server: {
         hmr: {
-            host: "89.111.152.136",
+            host: "80",
         },
         watch: {
             usePolling: true,

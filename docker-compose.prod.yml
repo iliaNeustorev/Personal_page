@@ -1,8 +1,7 @@
-version: "3"
+version: "3.8"
 services:
     nginx:
         image: nginx:stable-alpine
-        container_name: LP_nginx
         restart: unless-stopped
         volumes:
             - ./:/var/www
@@ -13,24 +12,19 @@ services:
         depends_on:
             - app
             - node
-        networks:
-            - my_network
+            - db
+
     app:
         build:
             context: .
             dockerfile: _docker/app/php.Dockerfile
             network: host
-        container_name: LP_app
         restart: unless-stopped
         volumes:
             - ./:/var/www
-        depends_on:
-            - db
-        networks:
-            - my_network
+
     db:
         image: mysql:8.0
-        container_name: LP_db
         restart: unless-stopped
         environment:
             MYSQL_DATABASE: ${DB_DATABASE}
@@ -43,22 +37,15 @@ services:
             - 3306:3306
         volumes:
             - ./tmp/db:/var/lib/mysql
-        networks:
-            - my_network
+
     node:
         build:
             context: .
             dockerfile: _docker/nodejs/node.Dockerfile
             network: host
-        container_name: LP_node
         tty: true
         ports:
             - "5173:5173"
         working_dir: /var/www
         volumes:
             - ./:/var/www
-        networks:
-            - my_network
-networks:
-    my_network:
-        driver: bridge
