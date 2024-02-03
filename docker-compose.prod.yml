@@ -53,6 +53,7 @@ services:
         build:
             context: .
             dockerfile: _docker/composer/composer.Dockerfile
+            network: host
         volumes:
             - ./:/var/www
 
