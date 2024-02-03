@@ -20,3 +20,4 @@ yarn-error.log
 /.vscode
 docker-compose.prod copy.yml
 /tmp
+package-lock.json
