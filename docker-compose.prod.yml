@@ -78,4 +78,4 @@ services:
 networks:
     default:
         ipam:
-            driver: default
+            driver: host
