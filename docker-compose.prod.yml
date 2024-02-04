@@ -7,12 +7,14 @@ services:
             - ./:/var/www
             - ./_docker/nginx/conf.d:/etc/nginx/conf.d
         ports:
-            - 80:80
+            - 89.111.152.136:80:80
             - 443:443
         depends_on:
             - app
             - db
             - node
+        networks:
+            - default
 
     app:
         build:
@@ -22,6 +24,8 @@ services:
         restart: unless-stopped
         volumes:
             - ./:/var/www
+        networks:
+            - default
 
     db:
         image: mysql:8.0
@@ -37,6 +41,8 @@ services:
             - 3306:3306
         volumes:
             - ./tmp/db:/var/lib/mysql
+        networks:
+            - default
 
     node:
         build:
@@ -48,6 +54,8 @@ services:
             - "5173:5173"
         volumes:
             - ./:/var/www
+        networks:
+            - default
             
     composer:
         build:
@@ -55,7 +63,8 @@ services:
             dockerfile: _docker/composer/composer.Dockerfile
         volumes:
             - ./:/var/www
-
+        networks:
+            - default
     artisan:
         build:
             context: .
@@ -63,3 +72,10 @@ services:
         volumes:
             - ./:/var/www
         entrypoint: ["php", "/var/www/artisan"]
+    networks:
+      - default
+
+networks:
+    default:
+        ipam:
+            driver: default
