@@ -3,16 +3,15 @@ services:
     nginx:
         image: nginx:stable-alpine
         restart: unless-stopped
+        tty: true
         volumes:
             - ./:/var/www
             - ./_docker/nginx/conf.d:/etc/nginx/conf.d
         ports:
-            - 89.111.152.136:80:80
-            - 443:443
+            - 80:80
         depends_on:
             - app
             - db
-            - node
 
     app:
         build:
@@ -20,6 +19,7 @@ services:
             dockerfile: _docker/app/php.Dockerfile
             network: host
         restart: unless-stopped
+        tty: true
         volumes:
             - ./:/var/www
 
@@ -50,6 +50,7 @@ services:
             - ./:/var/www
             
     composer:
+        tty: true
         build:
             context: .
             dockerfile: _docker/composer/composer.Dockerfile
