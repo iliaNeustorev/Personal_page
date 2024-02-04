@@ -13,8 +13,6 @@ services:
             - app
             - db
             - node
-        networks:
-            - default
 
     app:
         build:
@@ -24,8 +22,6 @@ services:
         restart: unless-stopped
         volumes:
             - ./:/var/www
-        networks:
-            - default
 
     db:
         image: mysql:8.0
@@ -41,8 +37,6 @@ services:
             - 3306:3306
         volumes:
             - ./tmp/db:/var/lib/mysql
-        networks:
-            - default
 
     node:
         build:
@@ -54,8 +48,6 @@ services:
             - "5173:5173"
         volumes:
             - ./:/var/www
-        networks:
-            - default
             
     composer:
         build:
@@ -72,10 +64,3 @@ services:
         volumes:
             - ./:/var/www
         entrypoint: ["php", "/var/www/artisan"]
-    networks:
-      - default
-
-networks:
-    default:
-        ipam:
-            driver: host
