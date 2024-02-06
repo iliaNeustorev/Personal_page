@@ -16,8 +16,8 @@ return new class extends Migration
             $table->id();
             $table->text('quotes')->nullable();
             $table->text('education')->nullable();
-            $table->string('teaching_experience', 255)->nullable();
-            $table->string('teaching_category', 100)->nullable();
+            $table->text('teaching_experience')->nullable();
+            $table->text('teaching_category')->nullable();
             $table->text('personal_slogan')->nullable();
             $table->text('credo')->nullable();
             $table->json('working_principles')->nullable();

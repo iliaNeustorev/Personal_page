@@ -158,8 +158,8 @@ export default {
                     validation: {
                         required: true,
                         validValue: false,
-                        rule: /^[\d]{1,255}$/,
-                        text: "Поле может содержать цифры до 255 символов",
+                        rule: /^[\d]{1,10000}$/,
+                        text: "Поле может содержать цифры до 10000 символов",
                     },
                 },
                 {
@@ -169,7 +169,7 @@ export default {
                     validation: {
                         required: true,
                         validValue: false,
-                        rule: /^[a-zA-Zа-яА-Я\d]{1,100}$/,
+                        rule: /^[a-zA-Zа-яА-Я\d]{1,10000}$/,
                         text: "Поле может содержать буквы и цифры до 100 символов",
                     },
                 },
