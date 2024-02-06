@@ -1,10 +1,14 @@
 <template>
     <nav class="navbar is-light" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <router-link :to="{ name: 'home' }" class="image is-64x64" title="На главную">
+            <router-link
+                :to="{ name: 'home' }"
+                class="image is-64x64"
+                title="На главную"
+            >
                 <img class="is-rounded" src="@/assets/logo.jpg" />
             </router-link>
-            <a class="navbar-burger mt-2 mr-1">
+            <a @click="mobMenu = !mobMenu" role="button" class="navbar-burger mt-2 mr-1" :class="{ 'is-active': mobMenu }">
                 <span
                     v-for="(item, i) in 3"
                     :key="i"
@@ -14,7 +18,7 @@
             </a>
         </div>
 
-        <div id="navbarBasicExample" class="navbar-menu">
+        <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': mobMenu }">
             <div class="navbar-start title is-5">
                 <router-link
                     v-for="route in menu"
@@ -44,24 +48,18 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
 export default {
-    components: {
-      
-    },
+    components: {},
     data() {
         return {
             menu: [
-                { name: "home", text: "Основная информация"},
+                { name: "home", text: "Основная информация" },
                 { name: "photos", text: "Фотографии" },
                 { name: "documents", text: "Документы" },
                 { name: "feedback", text: "Обратная связь" },
             ],
+            mobMenu:false
         };
-    },
-    computed: {
-       
     },
 };
 </script>

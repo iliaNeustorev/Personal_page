@@ -11,6 +11,7 @@ services:
         depends_on:
             - app
             - db
+            - node
 
     app:
         build:
@@ -42,18 +43,18 @@ services:
         volumes:
             - ./:/var/www
     
-    composer:
-        build:
-            context: .
-            dockerfile: _docker/composer/composer.Dockerfile
-        volumes:
-            - ./:/var/www
+    # composer:
+    #     build:
+    #         context: .
+    #         dockerfile: _docker/composer/composer.Dockerfile
+    #     volumes:
+    #         - ./:/var/www
 
-    artisan:
-        build:
-            context: .
-            dockerfile: _docker/app/php.Dockerfile
-        volumes:
-            - ./:/var/www
-        entrypoint: ["php", "/var/www/artisan"]
+    # artisan:
+    #     build:
+    #         context: .
+    #         dockerfile: _docker/app/php.Dockerfile
+    #     volumes:
+    #         - ./:/var/www
+    #     entrypoint: ["php", "/var/www/artisan"]
 
