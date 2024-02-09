@@ -71,7 +71,7 @@ export default {
     },
     computed: {
         validationFormFile() {
-            return this.validationFile.validValue && this.form.file !== null && this.form.name !== null && this.form.name !== undefined && this.form.name !== '';
+            return this.validationFile.validValue && this.form.file !== null && this.form.name !== undefined && this.form.name !== '';
         },
     },
     methods: {

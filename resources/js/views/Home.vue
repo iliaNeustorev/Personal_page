@@ -7,17 +7,17 @@
             </figure>
         </div>
         <div class="column">
-            <div class="box">
-                <div class="content">
-                    <div class="is-flex is-justify-content-space-between is-flex-wrap-wrap mb-1">
-                        <h1 class="is-italic is-family-sans-serif">Меня зовут <span>Език Елена Борисовна</span></h1>
-                        <AppModeratorAccess>
-                            <router-link :to="{ name: 'edit-main', params: { id: info.id ?? 0 } }" class="button is-success is-medium" :class="$style['button-edit']">
-                                Редактировать
-                            </router-link>
-                        </AppModeratorAccess>
-                    </div>
-                    <blockquote v-if="info.quotes">{{ info.quotes }}</blockquote>
+            <div class="content">
+                <div class="is-flex is-justify-content-space-between is-flex-wrap-wrap mb-1">
+                    <h1 class="is-italic is-family-sans-serif">Меня зовут <span>Език Елена Борисовна</span></h1>
+                    <AppModeratorAccess>
+                        <router-link :to="{ name: 'edit-main', params: { id: info.id ?? 0 } }" class="button is-success is-medium" :class="$style['button-edit']">
+                            Редактировать
+                        </router-link>
+                    </AppModeratorAccess>
+                </div>
+                <blockquote v-if="info.quotes">{{ info.quotes }}</blockquote>
+                <div class="box">
                     <p class="is-size-4 mb-0 has-text-weight-bold has-text-primary" :class="$style['color-p']">Образование: <span class="is-size-5 has-text-weight-normal has-text-dark"><span v-if="info.education">{{ info.education }}</span><span v-else> - </span></span></p>
                     <p class="is-size-4 mb-0 has-text-weight-bold" :class="$style['color-p']">Педагогический стаж: <span class="is-size-5 has-text-weight-normal has-text-dark"><span v-if="info.teaching_experience">{{ info.teaching_experience }}</span><span v-else> - </span></span></p>
                     <p class="is-size-4 mb-0 has-text-weight-bold" :class="$style['color-p']">Категория: <span class="is-size-5 has-text-weight-normal has-text-dark"><span v-if="info.teaching_category">{{ info.teaching_category }}</span><span v-else> - </span></span></p>

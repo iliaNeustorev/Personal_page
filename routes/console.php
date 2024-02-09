@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\CategoryDocument;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Inspiring;
@@ -42,4 +43,10 @@ Artisan::command('create-data', function () {
     $user->email_verified_at = Carbon::now();
     $user->save();
     $user->roles()->sync([2,3]);
+})->purpose('Display an inspiring quote');
+
+Artisan::command('create-category', function () {
+    CategoryDocument::create([
+        'name' => 'main',
+    ]);
 })->purpose('Display an inspiring quote');
