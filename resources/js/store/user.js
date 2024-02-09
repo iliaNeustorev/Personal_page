@@ -8,8 +8,8 @@ export default (userApi) => {
         getters: {
             user: (state) => state.user,
             isAuth: (state) => state.user?.first_name != undefined,
-            isDev: (state) => state.user?.roles.includes('dev'),
-            isModerator: (state) => ['dev', 'admin', 'moderator'].some(value => state.user?.roles?.includes(value))
+            isDev: (state) => state.user?.roles?.includes('dev') ?? false,
+            isModerator: (state) => ['dev', 'admin', 'moderator'].some(value => state.user?.roles?.includes(value)) ?? false
         },
         mutations: {
             setUser(state, payload) {
