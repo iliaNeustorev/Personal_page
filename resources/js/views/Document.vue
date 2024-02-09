@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container is-fluid">
         <p class="title is-3 has-text-primary-dark mx-2">
             Список документов
         </p>
@@ -17,7 +17,7 @@
            <i>Документов не найдено</i>
         </div>
         <AppModeratorAccess>
-            <div class="box is-flex mt-5">
+            <div class="is-flex mt-5">
                 <div class="media">
                     <div class="media-content">
                         <form-input-component

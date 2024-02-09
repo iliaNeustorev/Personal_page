@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container is-fluid">
         <p class="title is-3 has-text-primary-dark mx-2">
             Фотографии
         </p>
@@ -65,7 +65,7 @@
                     </div>
                 </div>
             </div>
-    </AppModeratorAccess>
+        </AppModeratorAccess>
     </div>
 </template>
 

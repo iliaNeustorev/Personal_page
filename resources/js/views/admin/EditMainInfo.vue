@@ -1,6 +1,6 @@
 <template>
    <div class="container">
-    <h2 class="is-size-2">Редактирование анкеты</h2>
+    <h2 class="is-size-2 mx-2">Редактирование анкеты</h2>
         <div class="box">
             <div class="column is-half">
                 <form-input-component
