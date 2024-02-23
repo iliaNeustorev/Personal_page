@@ -50,6 +50,15 @@ export default {
     z-index: 10000;
 }
 
+@media screen and (max-width: 648px) {
+    .info {
+        font-family: myriad-pro, sans-serif;
+        position: fixed;
+        width: 100%;
+        z-index: 10000;
+    }
+}
+
 .item {
     margin: 0 0 10px 0;
     border-radius: 20px;
