@@ -58,7 +58,7 @@ export default {
                 { name: "documents", text: "Документы" },
                 { name: "feedback", text: "Обратная связь" },
             ],
-            mobMenu:false
+            mobMenu: false
         };
     },
 };
