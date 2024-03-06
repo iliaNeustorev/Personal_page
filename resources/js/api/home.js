@@ -8,6 +8,10 @@ export default (http) => ({
         });
         return response.data;
     },
+    async testRoute() {
+        let response = await http.get("/test");
+        return response.data;
+    },
     async createInfo(info) {
         let response = await info.post("/main-info/store");
         return response.data;

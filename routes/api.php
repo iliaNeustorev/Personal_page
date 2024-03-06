@@ -9,6 +9,7 @@ use App\Http\Controllers\Photo as PhotoController;
 use App\Http\Controllers\Profile as ProfileController;
 
 Route::middleware('auth:sanctum')->get('/get', [ SessionsController::class, 'getUser' ]);
+Route::get('/test', [MainController::class, 'test'])->middleware('can:dev');
 Route::prefix('main-info')->group(function () {
     Route::get('/', [MainController::class, 'getMainInfo']);
     Route::middleware(['auth', 'can:moderator'])->group(function() {

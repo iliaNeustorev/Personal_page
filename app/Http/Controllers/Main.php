@@ -132,4 +132,15 @@ class Main extends Controller
         $mainInfoTeacher = $mainInfoTeacher->load(['image:id,imageable_id,imageable_type,url'])->toArray();
         return response()->json(['success' => true, 'data' => $mainInfoTeacher], 200);
     }
+
+    /**
+     * Test route for dev.
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function test(Request $request): JsonResponse
+    {
+        return response()->json(['OK'], 200);
+    }
 }

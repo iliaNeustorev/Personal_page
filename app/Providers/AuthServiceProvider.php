@@ -22,14 +22,14 @@ class AuthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         /**
-         * Проверка роли разработчика.
+         * Check role dev.
          */
-        Gate::define('admin', function ($user) {
+        Gate::define('dev', function ($user) {
             return $user->roles()->where('name', 'dev')->count() > 0;
         });
 
         /**
-         * Проверка роли модератора.
+         * Check role moderator.
          */
         Gate::define('moderator', function ($user) {
             return $user->roles()->whereIn('name', ['dev', 'admin', 'moderator'])->count() > 0;

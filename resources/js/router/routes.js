@@ -9,6 +9,7 @@ import EditMainInfo from "../views/admin/EditMainInfo.vue";
 import AllProfiles from "../views/admin/AllProfiles.vue";
 import Document from "../views/Document.vue";
 import FeedBack from "../views/Feedback.vue";
+import ComponentDev from "../components/support/ComponentDev.vue";
 
 export default function () {
     const routes = [
@@ -69,6 +70,11 @@ export default function () {
             name: "all-profiles",
             meta: { moderator: true },
             component: AllProfiles,
+        },
+        {
+            path: "/test",
+            meta: { moderator: true },
+            component: ComponentDev,
         },
         {
             path: "/:any(.*)*",
