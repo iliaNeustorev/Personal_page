@@ -141,6 +141,6 @@ class Main extends Controller
      */
     public function test(Request $request): JsonResponse
     {
-        return response()->json(['OK'], 200);
+        return response()->json(['data' => $request->ip()], 200);
     }
 }
