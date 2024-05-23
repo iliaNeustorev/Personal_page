@@ -141,6 +141,10 @@ class Main extends Controller
      */
     public function test(Request $request): JsonResponse
     {
-        return response()->json(['data' => $request->ip()], 200);
+        return response()->json([
+            'ip' => $request->ip(), 
+            'X-Forwarded-For' => $request->header('X-Forwarded-For'),
+            'X-Real-IP' => $request->header('X-Real-IP'),
+        ], 200);
     }
 }
