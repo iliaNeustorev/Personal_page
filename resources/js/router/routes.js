@@ -76,10 +76,10 @@ export default function () {
             meta: { moderator: true },
             component: ComponentDev,
         },
-        {
-            path: "/:any(.*)*",
-            component: E404,
-        },
+        // {
+        //     path: "/:any(.*)*",
+        //     component: E404,
+        // },
     ];
 
     return routes;
