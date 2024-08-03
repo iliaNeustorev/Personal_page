@@ -35,7 +35,6 @@ class MainInfoTeacher extends Model
     ];
     
     /**
-     * Получить фото профиля.
      *
      * @return MorphOne
      */
@@ -45,7 +44,6 @@ class MainInfoTeacher extends Model
     }
 
     /**
-     * Получить пользователя.
      *
      * @return BelongsTo
      */

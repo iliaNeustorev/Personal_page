@@ -13,7 +13,6 @@ use App\Http\Requests\Auth\PasswordReset as PasswordResetRequest;
 class NewPassword extends Controller
 {
    /**
-    * Страница изменения пароля.
     *
     * @param string $token
     * @return View
@@ -24,7 +23,6 @@ class NewPassword extends Controller
    }
 
    /**
-    * Создать новый пароль.
     *
     * @param PasswordResetRequest $request
     * @return RedirectResponse

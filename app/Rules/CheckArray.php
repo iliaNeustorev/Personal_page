@@ -2,16 +2,24 @@
 
 namespace App\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
-
-class CheckArray implements Rule
+class CheckArray
 {
-   
+    /**
+     *
+     * @param string $model
+     * @param boolean $checkKeys
+     */
     public function __construct( 
         protected string $model,  
         protected bool $checkKeys = false
         ) {}
-
+    
+    /**
+     *
+     * @param [type] $attribute
+     * @param [type] $array
+     * @return boolean
+     */
     public function passes($attribute, $array) : bool
     {
         if($this->checkKeys)
@@ -27,7 +35,10 @@ class CheckArray implements Rule
         return $cnt === count($array);
     }
 
-   
+    /**
+     *
+     * @return string
+     */
     public function message() : string
     {
         return trans('validation.checkArray');

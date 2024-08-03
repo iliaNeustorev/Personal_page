@@ -14,7 +14,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 class Sessions extends Controller
 {
     /**
-     * Страница входа на сайт.
      *
      * @return View
      */
@@ -24,7 +23,6 @@ class Sessions extends Controller
     }
 
     /**
-     * Залогинится.
      *
      * @param LoginRequest $request
      * @return RedirectResponse
@@ -37,7 +35,6 @@ class Sessions extends Controller
     }
 
     /**
-     * Разлогинится.
      *
      * @param Request $request
      * @return RedirectResponse
@@ -51,7 +48,6 @@ class Sessions extends Controller
     }
     
     /**
-     * Получить полную информацию о юзере.
      *
      * @param Request $request
      * @return array

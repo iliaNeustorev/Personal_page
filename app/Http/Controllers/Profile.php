@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Storage;
 class Profile extends Controller
 {
     /**
-     * Edit user.
      *
      * @param ProfileEditRequest $request
      * @return JsonResponse
@@ -31,7 +30,6 @@ class Profile extends Controller
     }
 
     /**
-     * Change password user.
      *
      * @param ChangePasswordRequest $request
      * @return JsonResponse
@@ -50,7 +48,6 @@ class Profile extends Controller
     }
     
     /**
-     * Save new avatar user.
      *
      * @param SaveAvatarRequest $request
      * @return JsonResponse
@@ -78,7 +75,6 @@ class Profile extends Controller
     }
 
     /**
-     * Delete avatar user.
      *
      * @param Request $request
      * @return JsonResponse
@@ -96,7 +92,6 @@ class Profile extends Controller
     }
 
     /**
-     * Delete profile.
      *
      * @param integer $id
      * @return JsonResponse

@@ -22,7 +22,6 @@ class Document extends Model
     ];
 
     /**
-     * Получить категорию документа.
      *
      * @return BelongsTo
      */

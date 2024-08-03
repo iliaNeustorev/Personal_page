@@ -11,11 +11,19 @@ use Illuminate\Validation\ValidationException;
 
 class Login extends FormRequest
 {
+    /**
+     *
+     * @return boolean
+     */
     public function authorize(): bool
     {
         return true;
     }
 
+    /**
+     *
+     * @return array
+     */
     public function rules(): array
     {
         return [
@@ -24,6 +32,10 @@ class Login extends FormRequest
         ];
     }
 
+    /**
+     *
+     * @return void
+     */
     public function authenticate(): void
     {
         $this->ensureIsNotRateLimited();
@@ -39,6 +51,10 @@ class Login extends FormRequest
         RateLimiter::clear($this->throttleKey());
     }
 
+    /**
+     *
+     * @return void
+     */
     public function ensureIsNotRateLimited(): void
     {
         if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
@@ -59,6 +75,10 @@ class Login extends FormRequest
         ]);
     }
 
+    /**
+     *
+     * @return string
+     */
     public function throttleKey(): string
     {
         return Str::transliterate(Str::lower($this->input('email')).'|'.$this->ip());

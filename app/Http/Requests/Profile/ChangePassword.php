@@ -7,14 +7,20 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ChangePassword extends FormRequest
 {
-  
-    public function authorize() : bool
+    /**
+     *
+     * @return boolean
+     */
+    public function authorize(): bool
     {
         return true;
     }
 
-
-    public function rules() : array
+    /**
+     *
+     * @return array
+     */
+    public function rules(): array
     {
         return [
             'current' => 'required|current_password',
@@ -22,7 +28,11 @@ class ChangePassword extends FormRequest
         ];
     }
 
-    public function attributes() : array
+    /**
+     *
+     * @return array
+     */
+    public function attributes(): array
     {
         return [
             'current' => 'текущий пароль',

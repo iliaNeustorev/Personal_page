@@ -16,7 +16,6 @@ class Role extends Model
     ];
 
     /**
-     * Получить пользователей роли.
      *
      * @return BelongsToMany
      */

@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Storage;
 class Image extends Controller
 {
     /**
-     * Сохранить фото для анкеты.
      *
      * @param SaveMainImage $request
      * @return JsonResponse
@@ -32,7 +31,6 @@ class Image extends Controller
     }
 
     /**
-     * Удалить фото для анкеты.
      *
      * @param MainInfoTeacher $mainInfoTeacher
      * @return JsonResponse

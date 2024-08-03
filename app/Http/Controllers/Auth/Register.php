@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 class Register extends Controller
 {
     /**
-     * Страница регистрации.
      *
      * @return View
      */
@@ -25,7 +24,6 @@ class Register extends Controller
     }
 
     /**
-     * Зарегистировать нового пользователя.
      *
      * @param RegisterRequest $request
      * @return RedirectResponse
@@ -38,7 +36,7 @@ class Register extends Controller
         $path = asset('storage/img/profile/nopicture.png');
         $user->image()->create(['url' => $path]);
         $user->cart()->create(['user_id' => $user->id]);
-        // event(new Registered($user));
+        //event(new Registered($user));
         Auth::login($user);
         return redirect()->intended(RouteServiceProvider::HOME)->with('notification', 'auth.register');
     }

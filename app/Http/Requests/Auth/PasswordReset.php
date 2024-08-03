@@ -7,13 +7,20 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class PasswordReset extends FormRequest
 {
-    
-    public function authorize() : bool
+    /**
+     *
+     * @return boolean
+     */
+    public function authorize(): bool
     {
         return true;
     }
 
-    public function rules() : array
+    /**
+     *
+     * @return array
+     */
+    public function rules(): array
     {
         return [
             'token' => ['required', 'string'],

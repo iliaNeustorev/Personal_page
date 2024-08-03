@@ -22,7 +22,6 @@ class Image extends Model
     ];
 
     /**
-     * Связь с картинками.
      *
      * @return MorphTo
      */

@@ -6,13 +6,21 @@ use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class Edit extends FormRequest
-{
-    public function authorize() : bool
+{   
+    /**
+     *
+     * @return boolean
+     */
+    public function authorize(): bool
     {
         return true;
     }
 
-    public function rules() : array
+    /**
+     *
+     * @return array
+     */
+    public function rules(): array
     {
         return [
             'first_name' => ['string', 'min:3', 'max:255'],

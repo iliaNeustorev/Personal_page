@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Storage;
 class Document extends Controller
 {
     /**
-     * Получить список все документы.
      *
      * @return JsonResponse
      */
@@ -22,7 +21,6 @@ class Document extends Controller
     }
 
     /**
-     * Добавить новый документ.
      *
      * @param SaveRequest $request
      * @return JsonResponse
@@ -44,7 +42,6 @@ class Document extends Controller
     }
 
     /**
-     * Удалить документ.
      *
      * @param ModelsDocument $document
      * @return JsonResponse

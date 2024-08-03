@@ -12,7 +12,6 @@ use Illuminate\Http\JsonResponse;
 class Main extends Controller
 {
     /**
-     * Сформировать главный view spa.
      *
      * @param Request $request
      * @return View
@@ -41,7 +40,6 @@ class Main extends Controller
     }
     
     /**
-     * Получить активную анкету.
      *
      * @return JsonResponse
      */
@@ -54,7 +52,6 @@ class Main extends Controller
     }
 
     /**
-     * Создать новую анкету.
      *
      * @param MainInfoCreate $request
      * @return JsonResponse
@@ -69,7 +66,6 @@ class Main extends Controller
     }
 
     /**
-     * Обновить анкету.
      *
      * @param MainInfoEdit $request
      * @param MainInfoTeacher $mainInfo
@@ -83,7 +79,6 @@ class Main extends Controller
     }
 
     /**
-     * Получить все анкеты.
      *
      * @return JsonResponse
      */
@@ -93,7 +88,6 @@ class Main extends Controller
     }
 
     /**
-     * Изменить активную анкету.
      *
      * @param Request $request
      * @param MainInfoTeacher $mainInfoTeacher
@@ -110,7 +104,6 @@ class Main extends Controller
     }
 
     /**
-     * Удалить анкету.
      *
      * @param MainInfoTeacher $mainInfoTeacher
      * @return JsonResponse
@@ -122,7 +115,6 @@ class Main extends Controller
     }
 
     /**
-     * Получить анкету.
      *
      * @param MainInfoTeacher $mainInfoTeacher
      * @return JsonResponse
@@ -141,10 +133,6 @@ class Main extends Controller
      */
     public function test(Request $request): JsonResponse
     {
-        return response()->json([
-            'ip' => $request->ip(), 
-            'X-Forwarded-For' => $request->header('X-Forwarded-For'),
-            'X-Real-IP' => $request->header('X-Real-IP'),
-        ], 200);
+        return response()->json([], 200);
     }
 }

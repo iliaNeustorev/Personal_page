@@ -17,7 +17,6 @@ class Photo extends Model
     ];
 
     /**
-     * Получить картинку.
      *
      * @return MorphOne
      */
@@ -26,7 +25,12 @@ class Photo extends Model
         return $this->morphOne(Image::class, 'imageable');
     }
 
-    protected function serializeDate(DateTimeInterface $date)
+    /**
+     *
+     * @param DateTimeInterface $date
+     * @return string
+     */
+    protected function serializeDate(DateTimeInterface $date): string
     {
         return $date->format('d.m.Y H:i:s');
     }

@@ -53,7 +53,6 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
-     * Получить автарку пользователя.
      *
      * @return MorphOne
      */
@@ -63,7 +62,6 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Получить роли пользователя.
      *
      * @return BelongsToMany
      */
@@ -73,7 +71,6 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * Получить основную информацию.
      *
      * @return HasOne
      */

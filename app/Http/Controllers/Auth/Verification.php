@@ -11,7 +11,6 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 class Verification extends Controller
 {
     /**
-     * Повторная отправка email.
      *
      * @param Request $request
      * @return RedirectResponse
@@ -23,7 +22,6 @@ class Verification extends Controller
     }
 
     /**
-     * Верифицировать email.
      *
      * @param EmailVerificationRequest $request
      * @return RedirectResponse

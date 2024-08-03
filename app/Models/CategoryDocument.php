@@ -21,7 +21,6 @@ class CategoryDocument extends Model
     ];
 
     /**
-     * Получить все документы категории.
      *
      * @return HasMany
      */

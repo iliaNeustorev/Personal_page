@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Storage;
 class Photo extends Controller
 {
     /**
-     * Получить все фотографии
      *
      * @return JsonResponse
      */
@@ -21,7 +20,6 @@ class Photo extends Controller
     }
 
     /**
-     * Сохранить новую фотографию.
      *
      * @param SavePhoto $request
      * @return JsonResponse
@@ -45,7 +43,6 @@ class Photo extends Controller
     }
 
     /**
-     * Удалить фотографию.
      *
      * @param ModelsPhoto $photo
      * @return JsonResponse

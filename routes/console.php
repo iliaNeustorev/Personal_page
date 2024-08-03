@@ -23,26 +23,6 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('create-data', function () {
-    $admin = User::create([
-        'first_name' => 'Илья',
-        'middle_name' => 'Евгеньевич',
-        'last_name' => 'Неустроев',
-        'email' => 'jjnn95@yandex.ru',
-        'password' => Hash::make(123),
-    ]);
-    $admin->email_verified_at = Carbon::now();
-    $admin->save();
-    $admin->roles()->sync([1,2,3]);
-    $user = User::create([
-        'first_name' => 'Елена',
-        'middle_name' => 'Борисовна',
-        'last_name' => 'Език',
-        'email' => 'ezikelena13081994@yandex.ru',
-        'password' => Hash::make(123321),
-    ]);
-    $user->email_verified_at = Carbon::now();
-    $user->save();
-    $user->roles()->sync([2,3]);
 })->purpose('Display an inspiring quote');
 
 Artisan::command('create-category', function () {

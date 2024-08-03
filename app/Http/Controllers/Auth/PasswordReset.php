@@ -12,7 +12,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 class PasswordReset extends Controller
 {
     /**
-     * Страница сброса пароля.
      *
      * @return View
      */
@@ -22,7 +21,6 @@ class PasswordReset extends Controller
     }
 
     /**
-     * Сбросить пароль.
      *
      * @param Request $request
      * @return RedirectResponse

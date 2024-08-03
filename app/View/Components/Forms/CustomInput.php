@@ -7,7 +7,14 @@ use Illuminate\Contracts\View\View;
 
 class CustomInput extends Component
 {
-
+    /**
+     *
+     * @param string $name
+     * @param string $label
+     * @param string $placeholder
+     * @param string $icon
+     * @param string $type
+     */
     public function __construct(
         public string $name,
         public string $label = '',
@@ -16,7 +23,10 @@ class CustomInput extends Component
         public string $type = 'text'
         ) {}
 
-   
+    /**
+     *
+     * @return View
+     */
     public function render() : View
     {
         return view('components.forms.custom-input');
