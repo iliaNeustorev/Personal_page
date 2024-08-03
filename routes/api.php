@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\Sessions as SessionsController;
 use App\Http\Controllers\Document as DocumentController;
+use App\Http\Controllers\Feedback as FeedbackController;
 use App\Http\Controllers\Image as ImageController;
 use App\Http\Controllers\Main as MainController;
 use App\Http\Controllers\Photo as PhotoController;
@@ -43,4 +44,9 @@ Route::prefix('profile')->middleware('auth')->group(function () {
     Route::delete('/{id}', [ProfileController::class, 'destroy']);
     Route::put('/changeAvatar', [ProfileController::class, 'changeAvatar']);
     Route::put('/deleteAvatar', [ ProfileController::class, 'deleteAvatar']);
+});
+
+Route::prefix('feedback')->group(function () {
+    Route::get('/', [FeedbackController::class, 'index'])->middleware(['can:moderator']);
+    Route::post('/store', [FeedbackController::class, 'store']);
 });

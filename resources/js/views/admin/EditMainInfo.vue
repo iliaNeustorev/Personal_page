@@ -125,7 +125,6 @@
                         :validation="validationForm"
                         :loading="loading"
                     />
-                    <router-link :to="{ name: 'all-profiles' }" class="button is-success is-medium">Смотреть все анкеты</router-link>
                     <AppButtonBack />
                 </div>
             </div>
