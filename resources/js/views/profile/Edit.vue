@@ -2,23 +2,12 @@
     <div class="container">
         <div class="box">
             <div class="column is-half">
-                <form-input-component
-                    v-for="input in inputs"
-                    :key="input.name"
-                    :form="profile"
-                    :name="input.name"
-                    :label="input.label"
-                    :placeholder="input.placeholder"
-                    :object-validation="input.validation"
-                    @validation-field="validationField($event, input.name)"
-                />
+                <form-input-component v-for="input in inputs" :key="input.name" :form="profile" :name="input.name"
+                    :label="input.label" :placeholder="input.placeholder" :object-validation="input.validation"
+                    @validation-field="validationField($event, input.name)" />
                 <div class="buttons is-right mt-4">
-                    <AppFormControls
-                        @click="editProfile"
-                        button-name="Принять изменения"
-                        :validation="validationForm"
-                        :loading="loading"
-                    />
+                    <AppFormControls @click="editProfile" button-name="Принять изменения" :validation="validationForm"
+                        :loading="loading" />
                     <AppButtonBack />
                 </div>
             </div>

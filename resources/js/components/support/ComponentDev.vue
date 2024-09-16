@@ -10,7 +10,7 @@
 <script>
 export default {
     async created() {
-        await this.$api.home.testRoute();
+        await this.$api.admin.testRoute();
     }
 }
 </script>

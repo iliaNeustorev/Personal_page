@@ -68,7 +68,7 @@ class Sessions extends Controller
             'img' => $img,
             'created_at' => $user['created_at'] ?? null,
             'email' => $user['email'] ?? null,
-            'roles' => $roles
+            'roles' => $roles,
         ];
         return $filtredUser;
     }

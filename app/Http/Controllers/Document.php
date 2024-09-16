@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Document\Save as SaveRequest;
-use App\Models\CategoryDocument;
 use App\Models\Document as ModelsDocument;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Storage;
@@ -32,11 +31,10 @@ class Document extends Controller
         $ext = $file->extension();
         $fileName = time(). mt_rand(1000, 9999) . '.' . $ext;
         Storage::putFileAs('public/documents/', $file, $fileName);
-        $categoryId = CategoryDocument::where('name', 'main')->firstOrfail()->id;
         ModelsDocument::create([
             'name' => $data['name'],
             'path' => '/storage/documents/' . $fileName,
-            'category_document_id' => $categoryId
+            'category_id' => $categoryId ?? null
         ]);
         return response()->json(['success' => true], 200);
     }

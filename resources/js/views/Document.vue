@@ -3,44 +3,31 @@
         <p class="title is-3 has-text-primary-dark mx-2">
             Список документов
         </p>
-        <loading-component v-if="loading"/>
+        <loading-component v-if="loading" />
         <ol v-else-if="documents.length">
             <li v-for="document in documents" :key="document.id">
-                {{ document.name }} 
-                <a :href = "document.path" download>(Скачать) </a>
+                {{ document.name }}
+                <a :href="document.path" download>(Скачать) </a>
                 <AppModeratorAccess>
                     <AppDeleteDocument :id="document.id" @reload-documents="getDocuments" />
                 </AppModeratorAccess>
             </li>
         </ol>
         <div v-else>
-           <i>Документов не найдено</i>
+            <i>Документов не найдено</i>
         </div>
         <AppModeratorAccess>
             <div class="is-flex mt-5">
                 <div class="media">
                     <div class="media-content">
-                        <form-input-component
-                            :form="form"
-                            name="name"
-                            label="Название документа"
-                            placeholder="Введите название"
-                        />
-                        <form-file-component
-                            :form="form"
-                            name="file"
-                            label="Добавить файл"
-                            :object-validation="validationFile"
-                            @validation-field="validationFieldFile"
-                        />
+                        <form-input-component :form="form" name="name" label="Название документа"
+                            placeholder="Введите название" />
+                        <form-file-component :form="form" name="file" label="Добавить файл"
+                            :object-validation="validationFile" @validation-field="validationFieldFile" />
                         <div class="field is-grouped is-grouped-centered mt-3">
-                            <AppFormControls
-                                @click="sendFile"
-                                button-name="Загрузить"
-                                class-name="button is-primary is-rounded"
-                                :validation="validationFormFile"
-                                :loading="loading"
-                            />
+                            <AppFormControls @click="sendFile" button-name="Загрузить"
+                                class-name="button is-primary is-rounded" :validation="validationFormFile"
+                                :loading="loading" />
                         </div>
                     </div>
                 </div>
@@ -54,7 +41,7 @@ import AppFormControls from "@/components/forms/buttons/Controls.vue";
 import AppDeleteDocument from "@/components/admin/DeleteDocument.vue";
 import { mapActions } from "vuex";
 export default {
-    components: { AppFormControls, AppDeleteDocument},
+    components: { AppFormControls, AppDeleteDocument },
     data() {
         return {
             form: this.$vform.make({

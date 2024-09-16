@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\CheckLimitFeedback;
 use Illuminate\Foundation\Http\FormRequest;
 
 class Feedback extends FormRequest
@@ -21,11 +22,10 @@ class Feedback extends FormRequest
      */
     public function rules(): array
     {
+        $user = request()->user();
         return [
-            'name' => ['required'],
-            'email' => ['required', 'string'],
             'question_subject' => ['nullable', 'min:1' ,'max:64'],
-            'question' => ['required'],
+            'question' => ['required', new CheckLimitFeedback($user)],
         ];
     }
 }

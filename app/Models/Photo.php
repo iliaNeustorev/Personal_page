@@ -5,6 +5,7 @@ namespace App\Models;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Photo extends Model
@@ -12,8 +13,8 @@ class Photo extends Model
     use HasFactory;
     
     protected $fillable = [
-        'category',
-        'caption'
+        'caption',
+        'category_id',
     ];
 
     /**
@@ -33,5 +34,14 @@ class Photo extends Model
     protected function serializeDate(DateTimeInterface $date): string
     {
         return $date->format('d.m.Y H:i:s');
+    }
+
+    /**
+     *
+     * @return BelongsTo
+     */
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
     }
 }

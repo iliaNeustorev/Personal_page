@@ -13,7 +13,7 @@ class Document extends Model
     protected $fillable = [
         'name',
         'path',
-        'category_document_id'
+        'category_id'
     ];
 
     protected $casts = [
@@ -27,6 +27,6 @@ class Document extends Model
      */
     public function category(): BelongsTo
     {
-        return $this->belongsTo(CategoryDocument::class);
+        return $this->belongsTo(Category::class);
     }
 }

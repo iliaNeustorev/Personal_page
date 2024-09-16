@@ -1,39 +1,31 @@
 <template>
-   <div class="container">
-    <h2 class="is-size-2 mx-2">Редактирование анкеты</h2>
+    <div class="container">
+        <h2 class="is-size-2 mx-2">Редактирование анкеты</h2>
         <div class="box">
             <div class="column is-half">
-                <form-input-component
-                    v-for="input in inputs"
-                    :key="input.name"
-                    :form="newInfo"
-                    :name="input.name"
-                    :label="input.label"
-                    :placeholder="input.placeholder"
-                    :object-validation="input.validation"
-                    @validation-field="validationField($event, input.name)"
-                />
+                <form-input-component v-for="input in inputs" :key="input.name" :form="newInfo" :name="input.name"
+                    :label="input.label" :placeholder="input.placeholder" :object-validation="input.validation"
+                    @validation-field="validationField($event, input.name)" />
                 <div class="mt-5" v-show="!showPrincipes">
-                    <label class="label is-clickable" title="Показать принципы работы" @click="showPrincipes = true">Принципы работы</label>
+                    <label class="label is-clickable" title="Показать принципы работы"
+                        @click="showPrincipes = true">Принципы работы</label>
                 </div>
                 <transition name="fade">
                     <div class="field mt-5" v-show="showPrincipes">
-                        <div class="is-flex is-flex-direction-row is-flex-wrap-wrap is-justify-content-space-between is-align-content-center mb-2">
-                            <label class="label is-clickable" title="Скрыть принципы работы" @click="showPrincipes = false">Принципы работы</label>
+                        <div
+                            class="is-flex is-flex-direction-row is-flex-wrap-wrap is-justify-content-space-between is-align-content-center mb-2">
+                            <label class="label is-clickable" title="Скрыть принципы работы"
+                                @click="showPrincipes = false">Принципы работы</label>
                             <a class="button is-info is-light" @click="addPrincipeWork">
                                 Добавить новый принцип
                             </a>
                         </div>
                         <div class="control" v-if="principeWork.length">
                             <div class="field has-addons" v-for="(, key) of principeWork" :key="key">
-                                <input
-                                    ref="first"
-                                    class="input"
-                                    type="text"
-                                    v-model.trim="principeWork[key]"
-                                />
+                                <input ref="first" class="input" type="text" v-model.trim="principeWork[key]" />
                                 <div class="control">
-                                    <a class="button is-danger" @click="deletePrincipeWork(key)" title="Удалить прицнип">
+                                    <a class="button is-danger" @click="deletePrincipeWork(key)"
+                                        title="Удалить прицнип">
                                         X
                                     </a>
                                 </div>
@@ -45,26 +37,25 @@
                     </div>
                 </transition>
                 <div class="mt-5" v-show="!showQualities">
-                    <label class="label is-clickable" title="Показать личные качества" @click="showQualities = true">Личные качества</label>
+                    <label class="label is-clickable" title="Показать личные качества"
+                        @click="showQualities = true">Личные качества</label>
                 </div>
                 <transition name="fade">
                     <div class="field mt-5" v-show="showQualities">
-                        <div class="is-flex is-flex-direction-row is-flex-wrap-wrap is-justify-content-space-between is-align-content-center mb-2">
-                            <label class="label is-clickable" title="Скрыть личные качества" @click="showQualities = false">Личные качества</label>
+                        <div
+                            class="is-flex is-flex-direction-row is-flex-wrap-wrap is-justify-content-space-between is-align-content-center mb-2">
+                            <label class="label is-clickable" title="Скрыть личные качества"
+                                @click="showQualities = false">Личные качества</label>
                             <a class="button is-info is-light" @click="addPersonalQuality">
                                 Добавить новое личное качество
                             </a>
                         </div>
                         <div class="control" v-if="personalQuality.length">
                             <div class="field has-addons" v-for="(, key) of personalQuality" :key="key">
-                                <input
-                                    ref="two"
-                                    class="input"
-                                    type="text"
-                                    v-model.trim="personalQuality[key]"
-                                />
+                                <input ref="two" class="input" type="text" v-model.trim="personalQuality[key]" />
                                 <div class="control">
-                                    <a class="button is-danger" @click="deletePersonalQuality(key)" title="Удалить качество">
+                                    <a class="button is-danger" @click="deletePersonalQuality(key)"
+                                        title="Удалить качество">
                                         X
                                     </a>
                                 </div>
@@ -84,47 +75,24 @@
                 <div v-if="$route.params.id != 0" class="is-flex is-justify-content-center">
                     <div class="media">
                         <div class="media-content">
-                            <form-file-component
-                                :form="file"
-                                name="picture"
-                                label="Загрузить"
-                                :object-validation="validationFile"
-                                @validation-field="validationFieldFile"
-                            />
+                            <form-file-component :form="file" name="picture" label="Загрузить"
+                                :object-validation="validationFile" @validation-field="validationFieldFile" />
                             <div class="field is-grouped is-grouped-centered mt-3">
-                                <AppFormControls
-                                    @click="sendFile"
-                                    button-name="OK"
-                                    class-name="button is-primary is-rounded"
-                                    :validation="validationFormFile"
-                                    :loading="loading"
-                                />
-                                <AppFormControls
-                                    @click="deleteAvatar"
-                                    button-name="Удалить фото"
-                                    class-name="button is-danger is-rounded"
-                                    :validation="userHasPicture"
-                                    :icon-show="false"
-                                    :loading="loading"
-                                />
+                                <AppFormControls @click="sendFile" button-name="OK"
+                                    class-name="button is-primary is-rounded" :validation="validationFormFile"
+                                    :loading="loading" />
+                                <AppFormControls @click="deleteAvatar" button-name="Удалить фото"
+                                    class-name="button is-danger is-rounded" :validation="userHasPicture"
+                                    :icon-show="false" :loading="loading" />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="buttons is-right mt-4">
-                    <AppFormControls
-                        @click="editInfo"
-                        button-name="Сохранить"
-                        :validation="validationForm && validationFormUpdate"
-                        :loading="loading"
-                    />
-                    <AppFormControls
-                        @click="createInfo"
-                        class-name="is-info is-light is-medium"
-                        button-name="Создать новую"
-                        :validation="validationForm"
-                        :loading="loading"
-                    />
+                    <AppFormControls @click="editInfo" button-name="Сохранить"
+                        :validation="validationForm && validationFormUpdate" :loading="loading" />
+                    <AppFormControls @click="createInfo" class-name="is-info is-light is-medium"
+                        button-name="Создать новую" :validation="validationForm" :loading="loading" />
                     <AppButtonBack />
                 </div>
             </div>
@@ -252,14 +220,14 @@ export default {
             ],
             newInfo: this.$vform.make({
                 quotes: null,
-                education: null, 
+                education: null,
                 teaching_experience: null,
                 teaching_category: null,
                 personal_slogan: null,
                 credo: null,
                 personal_email_teacher: null,
                 kindergarten_in_place_work: null,
-                address_kindergarten: null, 
+                address_kindergarten: null,
                 phone_kindergarten: null
             }),
             file: this.$vform.make({
@@ -392,7 +360,7 @@ export default {
                     if (this.$route.params.id == this.info.id) {
                         await this.load();
                     }
-                    
+
                     this.file.reset();
                 } catch (e) {
                     console.log(e)
@@ -434,14 +402,14 @@ export default {
         if (this.$route.params.id != 0 && this.data != []) {
             Object.assign(this.newInfo, {
                 quotes: this.data.quotes,
-                education: this.data.education, 
+                education: this.data.education,
                 teaching_experience: this.data.teaching_experience,
                 teaching_category: this.data.teaching_category,
                 personal_slogan: this.data.personal_slogan,
                 credo: this.data.credo,
                 personal_email_teacher: this.data.personal_email_teacher,
                 kindergarten_in_place_work: this.data.kindergarten_in_place_work,
-                address_kindergarten: this.data.address_kindergarten, 
+                address_kindergarten: this.data.address_kindergarten,
                 phone_kindergarten: this.data.phone_kindergarten
             });
             this.principeWork = this.data.working_principles ?? []
@@ -455,6 +423,7 @@ export default {
 .main-image {
     border-radius: 20px;
 }
+
 .fade-enter-from {
     opacity: 0;
 }

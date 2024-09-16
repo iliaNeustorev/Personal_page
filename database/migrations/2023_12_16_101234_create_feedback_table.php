@@ -1,5 +1,7 @@
 <?php
 
+use App\Enums\Feedback\Status as FeedbackStatus;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,10 +15,13 @@ return new class extends Migration
     {
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255);
-            $table->string('email');
+            $table->foreignIdFor(User::class)
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
             $table->string('question_subject')->nullable();
             $table->longText('question');
+            $table->tinyInteger('status')->default(FeedbackStatus::NEW->value);
             $table->timestamps();
         });
     }

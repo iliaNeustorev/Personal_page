@@ -1,24 +1,13 @@
 <template>
-  <form-checkbox-component
-    @click="showModal"
-    :form="active"
-    :ordinal-number="id"
-    name="check"
-  />
-  <modal-window-component ref="modal"
-    ><p>Вы действительно хотите изменить статус анкеты?</p>
+  <form-checkbox-component @click="showModal" :form="active" :ordinal-number="id" name="check" />
+  <modal-window-component ref="modal">
+    <p>Вы действительно хотите изменить статус анкеты?</p>
     <template v-slot:footer>
       <div class="buttons is-centered">
-        <button
-          class="button is-warning is-light is-outlined"
-          @click="cancelSendCheck"
-        >
+        <button class="button is-warning is-light is-outlined" @click="cancelSendCheck">
           Отмена
         </button>
-        <button
-          class="button is-success is-light is-outlined"
-          @click="sendCheck"
-        >
+        <button class="button is-success is-light is-outlined" @click="sendCheck">
           OK
         </button>
       </div>
@@ -62,10 +51,10 @@ export default {
         let result = await this.$api.home.changeActive(this.id, this.active);
         if (result.success) {
           await this.addMessage({
-                    text: "Активная анкета изменена",
-                    timeout: 3000,
-                    importance: "success",
-                });
+            text: "Активная анкета изменена",
+            timeout: 3000,
+            importance: "success",
+          });
           this.$emit("reload-info");
         }
       } catch (e) {

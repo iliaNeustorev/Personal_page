@@ -11,6 +11,8 @@ import Document from "../views/Document.vue";
 import FeedBack from "../views/Feedback.vue";
 import ComponentDev from "../components/support/ComponentDev.vue";
 import AllFeedback from "../views/admin/AllFeedback.vue";
+import AllUsers from "../views/admin/AllUsers.vue";
+import AllCategories from "../views/admin/Category/Index.vue";
 
 export default function () {
     const routes = [
@@ -67,25 +69,36 @@ export default function () {
             component: EditMainInfo,
         },
         {
-            path: "/test",
-            meta: { moderator: true },
-            component: ComponentDev,
-        },
-        {
             path: "/admin/",
             meta: { moderator: true },
             children: [
                 {
                     path: "all-feedback",
                     name: "all-feedback",
-                    meta: { moderator: true },
                     component: AllFeedback,
                 },
                 {
                     path: "all-profiles",
                     name: "all-profiles",
-                    meta: { moderator: true },
                     component: AllProfiles,
+                },
+                {
+                    path: "/test",
+                    name: "test",
+                    meta: { dev: true },
+                    component: ComponentDev,
+                },
+                {
+                    path: "/users",
+                    name: "all-users",
+                    meta: { dev: true },
+                    component: AllUsers,
+                },
+                {
+                    path: "/categories",
+                    name: "all-categories",
+                    meta: { dev: true },
+                    component: AllCategories,
                 },
             ],
         },

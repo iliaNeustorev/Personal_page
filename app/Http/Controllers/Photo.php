@@ -32,7 +32,8 @@ class Photo extends Controller
         $fileName = time(). mt_rand(1000, 9999) . '.' . $ext;
         Storage::putFileAs('public/img/photos/', $file, $fileName);
         ModelsPhoto::create([
-                'caption' => $data['caption'] ?? null
+                'caption' => $data['caption'] ?? null,
+                'category_id' => $categoryId ?? null
             ])
             ->image()
             ->create([

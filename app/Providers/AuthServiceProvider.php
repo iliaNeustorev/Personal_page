@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Enums\Roles;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -25,14 +26,21 @@ class AuthServiceProvider extends ServiceProvider
          * Check role dev.
          */
         Gate::define('dev', function ($user) {
-            return $user->roles()->where('name', 'dev')->count() > 0;
+            return $user->roles()->where('name', Roles::DEVELOPER)->count() > 0;
         });
 
         /**
          * Check role moderator.
          */
         Gate::define('moderator', function ($user) {
-            return $user->roles()->whereIn('name', ['dev', 'admin', 'moderator'])->count() > 0;
+            return $user->roles()->whereIn('name', [Roles::DEVELOPER, Roles::ADMIN, Roles::MODERATOR])->count() > 0;
+        });
+
+        /**
+         * Check block user.
+         */
+        Gate::define('block', function ($user) {
+            return $user->block == false;
         });
     }
 }

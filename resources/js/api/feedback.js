@@ -1,4 +1,5 @@
 export default (http) => ({
+    
     async index() {
         let response = await http.get("feedback", {
             errorStub: {

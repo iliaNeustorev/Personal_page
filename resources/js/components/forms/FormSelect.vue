@@ -1,20 +1,9 @@
 <template>
     <label :for="id" class="label"> {{ label }} </label>
     <div class="select is-multiple" :class="inputClasses">
-        <select
-            :multiple="multiple"
-            :id="id"
-            :size="size"
-            :name="name"
-            v-model="form[name]"
-            @change="validationField"
-        >
+        <select :multiple="multiple" :id="id" :size="size" :name="name" v-model="form[name]" @change="validationField">
             <option v-if="!multiple" value="" disabled>---Не выбрано---</option>
-            <option
-                v-for="option in options"
-                :key="option.id"
-                :value="option.id"
-            >
+            <option v-for="option in options" :key="option.id" :value="option.id">
                 {{ option.description }}
             </option>
         </select>

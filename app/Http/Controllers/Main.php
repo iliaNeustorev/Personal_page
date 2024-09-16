@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MainInfoCreate;
 use App\Http\Requests\MainInfoEdit;
+use App\Models\Feedback;
 use App\Models\MainInfoTeacher;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
@@ -18,7 +19,8 @@ class Main extends Controller
      */
     public function showSpa(Request $request): View
     {
-        $user = $request->user()?->load('roles', 'avatar');
+        $user = $request->user()?->load('roles', 'avatar', 'feedbacks:id,user_id');
+        $countFeedbacks = $user?->feedbacks?->count();
         $img = $user?->avatar?->url;
         $roles = $user?->roles?->pluck('name')->toArray();
         $user = $user?->toArray();
@@ -27,13 +29,15 @@ class Main extends Controller
             'first_name' => $user['first_name'] ?? null,
             'email_verified_at' => $user['email_verified_at'] ?? null,
             'img' => $img,
-            'roles' => $roles
+            'roles' => $roles,
+            'block' => $user['block'] ?? null,
+            'checkSendFeedback' => $countFeedbacks < Feedback::LIMIT_ON_USER,
         ];
-        $routes = [ 
+        $routes = [
             'auth' => '/auth/login', 
             'logout' => '/auth/logout', 
             'register' => '/auth/register',
-            'verifyEMail' => '/email/verification-notification'
+            'verifyEMail' => '/email/verification-notification',
         ];
         $context = ['user' => $filtredUser, 'routes' => $routes];
         return view('spa', compact('context'));
@@ -123,16 +127,5 @@ class Main extends Controller
     {
         $mainInfoTeacher = $mainInfoTeacher->load(['image:id,imageable_id,imageable_type,url'])->toArray();
         return response()->json(['success' => true, 'data' => $mainInfoTeacher], 200);
-    }
-
-    /**
-     * Test route for dev.
-     *
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function test(Request $request): JsonResponse
-    {
-        return response()->json([], 200);
     }
 }

@@ -1,4 +1,5 @@
 export default (http) => ({
+
     async saveMainInfoImage(image) {
         let response = await image.post("/image/save-main-info", {
             errorStub: {
@@ -9,6 +10,7 @@ export default (http) => ({
         });
         return response.data;
     },
+
     async deleteMainInfoImage(id) {
         let response = await http.delete(`image/${id}/delete`, {
             errorStub: {
@@ -19,6 +21,7 @@ export default (http) => ({
         });
         return response.data;
     },
+
     async getPhotos() {
         let response = await http.get("image/photo/index", {
             errorStub: {
@@ -29,6 +32,7 @@ export default (http) => ({
         });
         return response.data;
     },
+
     async addPhoto(photo) {
         let response = await photo.post("image/photo/store", {
             errorStub: {
@@ -39,6 +43,7 @@ export default (http) => ({
         });
         return response.data;
     },
+    
     async deletePhoto(id) {
         let response = await http.delete(`image/photo/${id}/delete`, {
             errorStub: {

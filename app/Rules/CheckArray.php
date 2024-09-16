@@ -2,45 +2,30 @@
 
 namespace App\Rules;
 
-class CheckArray
+use Closure;
+use Illuminate\Contracts\Validation\ValidationRule;
+
+class CheckArray implements ValidationRule
 {
+    public function __construct(
+        protected string $model
+    ) {}
+
     /**
+     * Run the validation rule.
      *
-     * @param string $model
-     * @param boolean $checkKeys
+     * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
      */
-    public function __construct( 
-        protected string $model,  
-        protected bool $checkKeys = false
-        ) {}
-    
-    /**
-     *
-     * @param [type] $attribute
-     * @param [type] $array
-     * @return boolean
-     */
-    public function passes($attribute, $array) : bool
+    public function validate(string $attribute, mixed $array, Closure $fail): void
     {
-        if($this->checkKeys)
-        {  
-            $array = array_keys($array);
-        }
         foreach ($array as $id){
             if(!preg_match('/^[1-9]+\d*$/', $id)){
-                return false;
+                $fail('id не число');
             }
         }
         $cnt = $this->model::whereIn('id', $array)->count();
-        return $cnt === count($array);
-    }
-
-    /**
-     *
-     * @return string
-     */
-    public function message() : string
-    {
-        return trans('validation.checkArray');
+        if ($cnt !== count($array)) {
+            $fail('Вы пытаетесь добавить несушествующий id');
+        }
     }
 }

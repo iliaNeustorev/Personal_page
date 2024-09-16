@@ -27,7 +27,10 @@ return new class extends Migration
             $table->string('address_kindergarten', 255)->nullable();
             $table->string('phone_kindergarten', 64)->nullable();
             $table->boolean('active')->default(0);
-            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(User::class)
+                ->constrained()
+                ->cascadeOnUpdate()
+                ->cascadeOnDelete();
             $table->timestamps();
         });
     }

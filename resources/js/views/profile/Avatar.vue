@@ -2,36 +2,21 @@
     <div class="card column is-half">
         <div class="card-image">
             <figure class="image is-square">
-                <img v-if="! user.img" src="@/assets/nouserpicture.png"/>
+                <img v-if="!user.img" src="@/assets/nouserpicture.png" />
                 <img v-else :src="user.img" alt="Аватар" />
             </figure>
         </div>
         <div class="card-content is-flex is-justify-content-center">
             <div class="media">
                 <div class="media-content">
-                    <form-file-component
-                        :form="file"
-                        name="picture"
-                        label="Загрузить"
-                        :object-validation="validation"
-                        @validation-field="validationField"
-                    />
+                    <form-file-component :form="file" name="picture" label="Загрузить" :object-validation="validation"
+                        @validation-field="validationField" />
                     <div class="field is-grouped is-grouped-centered mt-3">
-                        <AppFormControls
-                            @click="sendForm"
-                            button-name="OK"
-                            class-name="button is-primary is-rounded"
-                            :validation="validationForm"
-                            :loading="loading"
-                        />
-                        <AppFormControls
-                            @click="deleteAvatar"
-                            button-name="Удалить аватар"
-                            class-name="button is-danger is-rounded"
-                            :validation="userHasPicture"
-                            :icon-show="false"
-                            :loading="loading"
-                        />
+                        <AppFormControls @click="sendForm" button-name="OK" class-name="button is-primary is-rounded"
+                            :validation="validationForm" :loading="loading" />
+                        <AppFormControls @click="deleteAvatar" button-name="Удалить аватар"
+                            class-name="button is-danger is-rounded" :validation="userHasPicture" :icon-show="false"
+                            :loading="loading" />
                         <AppButtonBack class-name="is-info is-rounded" />
                     </div>
                 </div>

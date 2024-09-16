@@ -3,17 +3,14 @@
         <p class="title is-3 has-text-primary-dark mx-2">
             Фотографии
         </p>
-        <loading-component v-if="loading"/>
+        <loading-component v-if="loading" />
         <div v-else :class="$style.cards">
             <div v-if="!photos.length"><i>Нет фотографий</i></div>
-            <div
-                v-for="photo in photos"
-                :key="photo.id"
-                class="card p-2"
-            >
+            <div v-for="photo in photos" :key="photo.id" class="card p-2">
                 <div class="card-image">
                     <figure class="image is-square">
-                        <img class="is-clickable" v-if="photo.image != null" :src="photo.image.url" alt="Фото" @click="showImageModal(photo.image.url)" title="Подробнее">
+                        <img class="is-clickable" v-if="photo.image != null" :src="photo.image.url" alt="Фото"
+                            @click="showImageModal(photo.image.url)" title="Подробнее">
                         <img v-else src="@/assets/nopicture.jpg" alt="Фото">
                     </figure>
                 </div>
@@ -26,7 +23,7 @@
                 </div>
                 <AppModeratorAccess>
                     <footer class="card-footer">
-                        <AppDeletePhoto :id="photo.id" @reload-photo="getPhotos"/>
+                        <AppDeletePhoto :id="photo.id" @reload-photo="getPhotos" />
                     </footer>
                 </AppModeratorAccess>
             </div>
@@ -40,27 +37,14 @@
             <div class="is-flex mt-5">
                 <div class="media">
                     <div class="media-content">
-                        <form-file-component
-                            :form="file"
-                            name="picture"
-                            label="Загрузить"
-                            :object-validation="validationFile"
-                            @validation-field="validationFieldFile"
-                        />
-                        <form-textarea-component
-                            :form="file"
-                            name="caption"
-                            label="Описание"
-                            placeholder="Введите описание фотографии(если нужно)"
-                        />
+                        <form-file-component :form="file" name="picture" label="Загрузить"
+                            :object-validation="validationFile" @validation-field="validationFieldFile" />
+                        <form-textarea-component :form="file" name="caption" label="Описание"
+                            placeholder="Введите описание фотографии(если нужно)" />
                         <div class="field is-grouped is-grouped-centered mt-3">
-                            <AppFormControls
-                                @click="sendFile"
-                                button-name="Добавить фотографию"
-                                class-name="button is-primary is-rounded"
-                                :validation="validationFormFile"
-                                :loading="loading"
-                            />
+                            <AppFormControls @click="sendFile" button-name="Добавить фотографию"
+                                class-name="button is-primary is-rounded" :validation="validationFormFile"
+                                :loading="loading" />
                         </div>
                     </div>
                 </div>
@@ -154,6 +138,7 @@ export default {
     gap: 10px;
     grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
 }
+
 .cards a {
     color: #000;
 }

@@ -2,14 +2,14 @@
     <div class="container">
         <div class="card">
             <div class="card-content">
-                <div
-                    class="media is-flex is-justify-content-flex-start is-flex-wrap-wrap"
-                >
+                <div class="media is-flex is-justify-content-flex-start is-flex-wrap-wrap">
                     <div class="media-left">
                         <figure class="image is-128x128">
                             <router-link :to="{ name: 'profile.avatar' }">
-                                <img v-if="! user.img" src="@/assets/nouserpicture.png" alt="Аватар" title="Редактировать аватар"/>
-                                <img v-else class="is-rounded" :src="user.img" alt="Аватар" title="Редактировать аватар"/>
+                                <img v-if="!user.img" src="@/assets/nouserpicture.png" alt="Аватар"
+                                    title="Редактировать аватар" />
+                                <img v-else class="is-rounded" :src="user.img" alt="Аватар"
+                                    title="Редактировать аватар" />
                             </router-link>
                         </figure>
                     </div>
@@ -34,8 +34,7 @@
                             <span class="has-text-info">Номер телефона: </span>
                             <span v-if="user.phone != null">{{
                                 user.phone
-                            }}</span
-                            ><span v-else>Не задан</span>
+                            }}</span><span v-else>Не задан</span>
                         </p>
                         <p class="subtitle">
                             <span class="has-text-info">Статус: </span>
@@ -46,16 +45,10 @@
                             {{ user.created_at }}
                         </p>
                         <div class="buttons">
-                            <router-link
-                                class="button is-success"
-                                :to="{ name: 'profile.edit' }"
-                                >Редактировать</router-link
-                            >
-                            <router-link
-                                class="button is-warning"
-                                :to="{ name: 'profile.password' }"
-                                >Сменить пароль</router-link
-                            >
+                            <router-link class="button is-success"
+                                :to="{ name: 'profile.edit' }">Редактировать</router-link>
+                            <router-link class="button is-warning" :to="{ name: 'profile.password' }">Сменить
+                                пароль</router-link>
                             <AppDeleteProfile :id="user.id" />
                         </div>
                     </div>

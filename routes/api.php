@@ -1,16 +1,19 @@
 <?php
 
+use App\Http\Controllers\Admin as AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\Sessions as SessionsController;
+use App\Http\Controllers\Category as CategoryController;
 use App\Http\Controllers\Document as DocumentController;
 use App\Http\Controllers\Feedback as FeedbackController;
 use App\Http\Controllers\Image as ImageController;
 use App\Http\Controllers\Main as MainController;
 use App\Http\Controllers\Photo as PhotoController;
 use App\Http\Controllers\Profile as ProfileController;
+use App\Http\Controllers\Role as RoleController;
 
 Route::middleware('auth:sanctum')->get('/get', [ SessionsController::class, 'getUser' ]);
-Route::get('/test', [MainController::class, 'test'])->middleware('can:dev');
+
 Route::prefix('main-info')->group(function () {
     Route::get('/', [MainController::class, 'getMainInfo']);
     Route::middleware(['auth', 'can:moderator'])->group(function() {
@@ -48,5 +51,15 @@ Route::prefix('profile')->middleware('auth')->group(function () {
 
 Route::prefix('feedback')->group(function () {
     Route::get('/', [FeedbackController::class, 'index'])->middleware(['can:moderator']);
-    Route::post('/store', [FeedbackController::class, 'store']);
+    Route::post('/store', [FeedbackController::class, 'store'])->middleware('can:block');
+});
+
+// ADMIN ROUTE
+Route::prefix('admin')->middleware(['can:dev'])->group(function () {
+    Route::get('/test', [AdminController::class, 'test']);
+    Route::get('/users', [AdminController::class, 'getUsers']);
+    Route::put('/{user}/blocked-user', [AdminController::class, 'blockedUser']);
+    Route::put('/{user}/update-roles', [RoleController::class, 'updateRole']);
+    Route::get('/{user}/get-roles', [RoleController::class, 'getRoles']);
+    Route::resource('/categories', CategoryController::class)->except('show');
 });

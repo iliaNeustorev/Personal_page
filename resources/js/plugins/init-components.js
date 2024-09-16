@@ -9,6 +9,10 @@ import ModeratorAccess from "@/components/accesses/Moderator.vue";
 import Notification from "@/components/support/Notification.vue";
 import ButtonBack from "@/components/forms/buttons/Back.vue";
 import FormTextarea from "@/components/forms/FormTextarea.vue";
+import Pagination from "@/components/support/Pagination.vue";
+import BlockAccess from "@/components/accesses/Blocked.vue";
+import VerifyAccess from "@/components/accesses/Verify.vue";
+import FormSelect from "@/components/forms/FormSelect.vue";
 
 export default () => ({
     install(app) {
@@ -17,11 +21,15 @@ export default () => ({
         app.component("form-checkbox-component", FormCheckbox);
         app.component("form-file-component", FormFile);
         app.component("form-textarea-component", FormTextarea);
+        app.component("form-select-component", FormSelect);
         app.component("AppAuthAccess", AuthAccess);
         app.component("AppDevAccess", DevAccess);
         app.component("AppModeratorAccess", ModeratorAccess);
         app.component("AppNotification", Notification);
         app.component("AppButtonBack", ButtonBack);
         app.component("loading-component", Loading);
+        app.component("pagination-component", Pagination);
+        app.component("AppBlockAccess", BlockAccess);
+        app.component("AppVerifyAccess", VerifyAccess);
     },
 });

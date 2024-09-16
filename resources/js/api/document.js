@@ -1,4 +1,5 @@
 export default (http) => ({
+
     async getDocuments() {
         let response = await http.get("document/index", {
             errorStub: {
@@ -9,6 +10,7 @@ export default (http) => ({
         });
         return response.data;
     },
+
     async addDocument(document) {
         let response = await document.post("document/store", {
             errorStub: {
@@ -19,6 +21,7 @@ export default (http) => ({
         });
         return response.data;
     },
+    
     async deleteDocument(id) {
         let response = await http.delete(`document/${id}/destroy`, {
             errorStub: {

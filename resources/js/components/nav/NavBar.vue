@@ -34,6 +34,12 @@
                     <AppAuthAccess :noAuth="true">
                         <div class="buttons">
                             <a
+                                :href="$redirectRoutes.register()"
+                                class="button is-link"
+                            >
+                                <strong>Регистрация</strong>
+                            </a>
+                            <a
                                 :href="$redirectRoutes.login()"
                                 class="button is-primary"
                             >

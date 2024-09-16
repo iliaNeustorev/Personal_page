@@ -4,6 +4,7 @@ import createUserApi from "@/api/user";
 import createImageApi from "@/api/image";
 import createDocumentApi from "@/api/document";
 import createFeedbackApi from "@/api/feedback";
+import createAdminApi from "@/api/admin";
 import { inject } from "vue";
 
 export default () => {
@@ -20,7 +21,8 @@ export default () => {
         user: createUserApi(http),
         image: createImageApi(http),
         document: createDocumentApi(http),
-        feedback: createFeedbackApi(http)
+        feedback: createFeedbackApi(http),
+        admin: createAdminApi(http),
     };
     function install(app) {
         app.config.globalProperties["$api"] = api;

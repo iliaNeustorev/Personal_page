@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\CategoryDocument;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Inspiring;
@@ -26,7 +25,4 @@ Artisan::command('create-data', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('create-category', function () {
-    CategoryDocument::create([
-        'name' => 'main',
-    ]);
 })->purpose('Display an inspiring quote');

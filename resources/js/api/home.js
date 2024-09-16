@@ -1,4 +1,5 @@
 export default (http) => ({
+
     async getMainInfo() {
         let response = await http.get("/main-info", {
             errorStub: {
@@ -8,18 +9,17 @@ export default (http) => ({
         });
         return response.data;
     },
-    async testRoute() {
-        let response = await http.get("/test");
-        return response.data;
-    },
+    
     async createInfo(info) {
         let response = await info.post("/main-info/store");
         return response.data;
     },
+
     async updateInfo(infoId, data) {
         let response = await data.put(`/main-info/update/${infoId}`);
         return response.data;
     },
+
     async allProfiles() {
         let response = await http.get('/main-info/all', {
             errorStub: {
@@ -29,6 +29,7 @@ export default (http) => ({
         });
         return response.data;
     },
+
     async changeActive(id, active) {
         let response = await active.put(`/main-info/${id}/change-active`, {
             errorStub: {
@@ -39,6 +40,7 @@ export default (http) => ({
         });
         return response.data;
     },
+
     async deleteProfile(id) {
         let response = await http.delete(`/main-info/${id}/delete`, {
             errorStub: {
@@ -49,6 +51,7 @@ export default (http) => ({
         });
         return response.data;
     },
+
     async oneInfo(id) {
         let response = await http.get(`/main-info/${id}/one`, {
             errorStub: {

@@ -15,7 +15,7 @@
 
 <script>
 import AppUserPanel from "@/components/auth/UserPanel.vue";
-import AppAdminPanel from "@/components/auth/AdminPanel.vue";
+import AppAdminPanel from "@/components/admin/AdminPanel.vue";
 export default {
     components: {
         AppUserPanel,

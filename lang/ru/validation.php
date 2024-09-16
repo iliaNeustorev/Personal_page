@@ -117,7 +117,6 @@ return [
     'uploaded'             => 'Загрузка поля :attribute не удалась.',
     'url'                  => 'Значение поля :attribute имеет ошибочный формат URL.',
     'uuid'                 => 'Значение поля :attribute должно быть корректным UUID.',
-    'checkArray'           => 'Выпытаетесь добавить несушествующий id',
     'checkCountStore'      => 'Лимит количества товаров превышен',
     'custom'               => [
         'attribute-name' => [
@@ -139,5 +138,8 @@ return [
         'phone_kindergarten' => 'Телефон детского сада',
         'working_principles' => 'Принципы работы',
         'personal_qualities' => 'Персональные качества',
+        'first_name' => 'Имя',
+        'password' => 'Пароль',
+        'question' => 'Текст'
     ]
 ];
