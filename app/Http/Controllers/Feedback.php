@@ -3,15 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Feedback as RequestsFeedback;
-use App\Mail\NewFeedback;
 use App\Models\Feedback as ModelsFeedback;
-use App\Models\User;
+use App\Services\UserService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Mail;
 
 class Feedback extends Controller
-{
+{   
+    /**
+     * Undocumented function
+     *
+     * @param UserService $userService
+     */
+    public function __construct(
+        public UserService $userService
+    ) {}
+
     /**
      *
      * @return JsonResponse
@@ -38,13 +44,7 @@ class Feedback extends Controller
     {
         $data = $request->validated();
         $user = $request->user();
-        $feedback = $user->feedbacks()->create($data);
-        try {
-            $moder = User::where('email', 'jjnn95@yandex.ru')->firstOrfail();
-            Mail::to($moder)->send(new NewFeedback($feedback));
-        } catch (\Throwable $th) {
-            Log::error('Отправить письмо модератору не удалось ' . $th->getMessage());
-        }
+        $this->userService->createFeedback($user, $data);
         return response()->json(['success' => true], 200);
     }
 }
