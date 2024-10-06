@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class Admin extends Controller
 {
@@ -16,6 +17,10 @@ class Admin extends Controller
      */
     public function test(Request $request): JsonResponse
     {
+        $test = '1111';
+        dispatch(function () use ($test) {
+            Log::info('Джоб выполнен' .  $test);
+        })->onQueue('test');
         return response()->json([], 200);
     }
 
