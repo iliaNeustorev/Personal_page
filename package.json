@@ -2,7 +2,7 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
+        "build": "sass --quiet-deps resources/css/app.scss public/css/app.css",
         "postinstall": "patch-package"
     },
     "devDependencies": {
