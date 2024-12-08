@@ -38,7 +38,7 @@ export default {
             validation: {
                 validValue: false,
                 rule: /^.+\.jpeg|jpg|png|bmp$/,
-                text: "Картинка должна иметь расширение jpeg,jpg,png,bmp",
+                text: "Картинка должна иметь расширение jpeg,jpg,png,bmp,webp",
             },
             loading: false,
         };
