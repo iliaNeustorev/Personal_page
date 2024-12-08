@@ -10,7 +10,7 @@ import { inject } from "vue";
 export default () => {
     const http = axios.create({
         baseURL: "/api/",
-        timeout: 10000,
+        timeout: 60000,
         headers: {
             Accept: "application/json",
             "X-Requested-With": "XMLHttpRequest",
