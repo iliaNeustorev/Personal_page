@@ -23,7 +23,7 @@ class Save extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'file' => ['required', 'mimes:pdf,docx,doc,csv,xls,xlsx,docm']
+            'file' => ['required', 'file', 'mimes:pdf,docx,doc,csv,xls,xlsx,docm']
         ];
     }
 }

@@ -22,7 +22,7 @@ class SavePhoto extends FormRequest
     public function rules(): array
     {
         return [
-            'picture' => ['required', 'image'],
+            'picture' => ['required', 'file', 'image'],
             'caption' => ['string']
         ];
     }

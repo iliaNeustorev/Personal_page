@@ -23,7 +23,7 @@ class SaveMainImage extends FormRequest
     {
         return [
             'id' => ['required'],
-            'picture' => ['required', 'image'],
+            'picture' => ['required', 'file', 'image'],
         ];
     }
 }
