@@ -24,18 +24,6 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('create-data', function () {
-    $user = User::create([
-        'first_name' => 'Елена',
-        'middle_name' => 'Борисовна',
-        'last_name' => 'Език',
-        'email' => 'ezikelena13081994@yandex.ru',
-        'password' => Hash::make('@123321@'),
-        'email_verified_at' => Carbon::now()
-    ]);
-    $roleIdsUser = Role::whereIn('name', [Roles::USER, Roles::ADMIN, Roles::MODERATOR])
-        ->pluck('id')
-        ->toArray();
-    $user->roles()->sync($roleIdsUser);
 })->purpose('Display an inspiring quote');
 
 Artisan::command('create-category', function () {
