@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Mail;
 
 class UserService
 {
-    const MODER_EMAIL_SEND = 'jjnn95@yandex.ru';
+    const MODER_EMAIL_SEND = 'ezikelena13081994@yandex.ru';
     /**
      *
      * @param array $data
