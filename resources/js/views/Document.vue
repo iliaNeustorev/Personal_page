@@ -1,6 +1,6 @@
 <template>
     <div class="container is-fluid">
-        <p class="title is-3 has-text-primary-dark mx-2">
+        <p class="title is-3 has-text-primary-dark mx-2 mt-2">
             Список документов
         </p>
         <loading-component v-if="loading" />
