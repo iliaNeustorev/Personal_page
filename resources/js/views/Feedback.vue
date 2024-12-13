@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container is-fluid">
         <p class="title is-3 has-text-primary-dark mx-2 mt-2">
             Обратная связь
         </p>

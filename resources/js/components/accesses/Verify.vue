@@ -1,7 +1,7 @@
 <template>
     <slot v-if="verify"></slot>
     <p v-else>
-        <i class="has-text-primary-dark">Зарегистрируйтесь и подтвердите почту</i>
+        <i class="has-text-primary-dark mx-2">Зарегистрируйтесь и подтвердите почту</i>
     </p>
 </template>
 
