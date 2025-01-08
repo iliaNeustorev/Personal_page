@@ -19,5 +19,6 @@ yarn-error.log
 /.idea
 /.vscode
 docker-compose.yml
+docker-compose.prod.yml
 /tmp
 package-lock.json
