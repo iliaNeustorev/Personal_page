@@ -18,6 +18,6 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-docker-compose.prod copy.yml
+docker-compose.yml
 /tmp
 package-lock.json
